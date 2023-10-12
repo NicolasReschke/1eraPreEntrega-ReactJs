@@ -3,6 +3,10 @@
     margin-bottom: 30px;
 }
 
+.nav-link {
+    color: blueviolet;
+}
+
 .imgLogo {
     width: 55px;
     margin-left: 15px;
