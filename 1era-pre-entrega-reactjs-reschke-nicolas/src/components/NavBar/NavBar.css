@@ -11,4 +11,7 @@
     width: 55px;
     margin-left: 15px;
     margin-right:15px;
+    &:hover{
+        transform: scale(1.10);
+    }
 }
