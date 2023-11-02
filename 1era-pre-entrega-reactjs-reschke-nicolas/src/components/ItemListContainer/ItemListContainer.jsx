@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react"
 import { mFetch } from "../../helpers/mFetch"
+import { ItemCounter } from "../ItemCounter/ItemCounter"
+
+
+const onAdd = cant => {
+    console.log(cant);
+}
 
 function ItemListContainer({saludo = "saludo por defecto"}) {
     const [ products, setProducts ] = useState([])
@@ -21,14 +27,21 @@ console.log(products)
             { loading ? <img src="/assets/sample.gif" alt="" />
             :
             products.map(product=> 
-                                    <div className="card w-25">
-                                        <img src={product.img} className="card-img-top" alt=""/>
-                                            <p>Nombre: {product.name}</p>
+                                    <div className="card w-25 h-100">
+                                        <div className="card">
+                                            <img src={product.img} className="card-img-top" alt=""/>
+                                        </div>
+                                        <div className="card-body">
+                                            <h3>Nombre: {product.name}</h3>
                                             <p>Categoría: {product.category}</p>
                                             <p>Precio: {product.price}</p>
+                                            <div>
+                                                <ItemCounter onAdd={onAdd}/>
+                                            </div>
                                             <div className="card-footer">
                                                 <button className="btn w-100">Detalle</button>
-                                            </div> 
+                                            </div>
+                                        </div>
                                     </div>
             )}
         </>
