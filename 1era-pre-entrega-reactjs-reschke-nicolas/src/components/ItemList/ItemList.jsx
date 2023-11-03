@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ItemCounter } from "../ItemCounter/ItemCounter"
 import { Filter } from "./Filter";
 
@@ -34,9 +35,9 @@ const productFiltered = ({products, filterState, handleFilterChange}) => (
                         <div>
                             <ItemCounter onAdd={onAdd}/>
                         </div>
-                        <div className="card-footer">
+                        <Link to={`/detail/${product.id}`} className="card-footer">
                             <button className="btn w-100">Detalle</button>
-                        </div>
+                        </Link>
                     </div>
                 </div>
             )
@@ -54,9 +55,9 @@ const productFiltered = ({products, filterState, handleFilterChange}) => (
                         <div>
                             <ItemCounter onAdd={onAdd}/>
                         </div>
-                        <div className="card-footer">
+                        <Link to={`/detail/${product.id}`} className="card-footer">
                             <button className="btn w-100">Detalle</button>
-                        </div>
+                        </Link>
                     </div>
                 </div>
             )

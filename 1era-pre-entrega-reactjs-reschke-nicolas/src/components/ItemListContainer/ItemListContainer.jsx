@@ -4,9 +4,6 @@ import { ItemList } from "../ItemList/ItemList";
 
 import "./ItemListContainer.css"
 
-
-
-
 function ItemListContainer({saludo = "saludo por defecto"}) {
     const [ products, setProducts ] = useState([])
     const [ loading, setLoading ] = useState(true)
@@ -16,7 +13,6 @@ function ItemListContainer({saludo = "saludo por defecto"}) {
         .then(resultado => setProducts(resultado))
         .catch(error => console.log(error))
         .finally(()=> setLoading(false))
-
     }, [])
 console.log(products)
 

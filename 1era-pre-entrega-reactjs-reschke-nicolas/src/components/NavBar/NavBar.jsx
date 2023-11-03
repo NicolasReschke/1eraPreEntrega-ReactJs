@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { CartWidget } from '../CartWidget/CartWidget';
 import imagen from '../../assets/LOGO1.jpg'
+import { Link } from 'react-router-dom';
 
 function NavBar () {
     return (
@@ -18,7 +19,7 @@ function NavBar () {
                         style={{ maxHeight: '100rem' }}
                         navbarScroll
                     >
-                        <Nav.Link href="#action1">Inicio</Nav.Link>
+                        <Link className="nav-link" to="/">Inicio</Link>
                         <NavDropdown title="Catalogo" id="navbarScrollingDropdown">
                             <NavDropdown.Item href="#action1">
                                 Todos los productos
@@ -42,7 +43,10 @@ function NavBar () {
                         </NavDropdown>
                     </Nav>
                     
-                    <CartWidget />
+                    <Link to='/cart'>
+                        <CartWidget />
+                    </Link>
+
                 </Navbar.Collapse>
             </Container>
         </Navbar>
