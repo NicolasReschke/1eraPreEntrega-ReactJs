@@ -11,7 +11,7 @@ function NavBar () {
         <Navbar expand="lg" className="navbar-dark bg-dark">
             <Container fluid>
                 <img className='imgLogo' src= {imagen} />
-                <Navbar.Brand href="#">PastaLú</Navbar.Brand>
+                <Navbar.Brand>PastaLú</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -21,25 +21,26 @@ function NavBar () {
                     >
                         <Link className="nav-link" to="/">Inicio</Link>
                         <NavDropdown title="Catalogo" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="#action1">
+                            <Link className='nav-link dropdown-toggle' to='/'>
                                 Todos los productos
-                            </NavDropdown.Item>
+                            </Link>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action2">
+                            <Link className='dropdown-item' to='/category/raviolones'>
                                 Raviolones
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action3">
+                            </Link>
+                            <Link className='dropdown-item' to='/category/sorrentinos'>
                                 Sorrentinos
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action4">
+                            </Link>
+                            <Link className='dropdown-item' to='/category/tallarines'>
                                 Tallarines
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action5">
+                            </Link>
+                            <Link className='dropdown-item' to='/category/ñoquis'>
                                 Ñoquis
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action6">
+                            </Link>
+                            <Link className='dropdown-item' to='/category/canelones'>
                                 Canelones
-                            </NavDropdown.Item>
+                            </Link>
+                            
                         </NavDropdown>
                     </Nav>
                     
