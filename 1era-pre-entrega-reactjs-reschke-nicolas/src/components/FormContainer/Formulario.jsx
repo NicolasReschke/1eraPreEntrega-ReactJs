@@ -9,13 +9,14 @@ function Formulario() {
             <Titulo 
                 subTitulo={subtituloForm}
             />
+            
             <Form.Control
-                type="search"
-                placeholder="Search"
+                type="text"
+                placeholder="Buscar"
                 className="me-2"
                 aria-label="Search"
             />
-            <Button variant="outline-success">Search</Button>
+            {/* <Button variant="outline-success">Search</Button> */}
         </Form>
     )
 }

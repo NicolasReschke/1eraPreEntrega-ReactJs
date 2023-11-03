@@ -28,7 +28,7 @@ function App() {
         titulo={tituloApp}
         subTitulo={subtituloApp}
       />
-      <Formulario />
+      {/* <Formulario /> */}
       <ItemListContainer saludo="Bienvenidos!!!" />
       <FormContainer/>
     </>
