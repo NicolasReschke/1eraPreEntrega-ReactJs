@@ -1,4 +1,9 @@
 .asdasd{
     padding: 10px;
     margin: 15px;
+    align-items: center;
+}
+
+.searchBar {
+    margin-bottom: 25px;
 }

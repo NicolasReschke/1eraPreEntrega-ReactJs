@@ -19,28 +19,32 @@ function NavBar () {
                         style={{ maxHeight: '100rem' }}
                         navbarScroll
                     >
-                        <Link className="nav-link" to="/">Inicio</Link>
+                        <Link className="nav-link" to="/">
+                            Inicio
+                        </Link>
                         <NavDropdown title="Catalogo" id="navbarScrollingDropdown">
-                            <Link className='nav-link dropdown-toggle' to='/'>
+                            <Link className='nav-link dropdown-toggle btn btn-outline-success' to='/'>
                                 Todos los productos
                             </Link>
                             <NavDropdown.Divider />
+                            <Link className='dropdown-item' to='/category/ñoquis'>
+                                Ñoquis
+                            </Link>
+                            <Link className='dropdown-item' to='/category/tallarines'>
+                                Tallarines
+                            </Link>
                             <Link className='dropdown-item' to='/category/raviolones'>
                                 Raviolones
                             </Link>
                             <Link className='dropdown-item' to='/category/sorrentinos'>
                                 Sorrentinos
                             </Link>
-                            <Link className='dropdown-item' to='/category/tallarines'>
-                                Tallarines
-                            </Link>
-                            <Link className='dropdown-item' to='/category/ñoquis'>
-                                Ñoquis
-                            </Link>
                             <Link className='dropdown-item' to='/category/canelones'>
                                 Canelones
                             </Link>
-                            
+                            <Link className='dropdown-item' to='/category/empanadas'>
+                                Empanadas
+                            </Link>
                         </NavDropdown>
                     </Nav>
                     

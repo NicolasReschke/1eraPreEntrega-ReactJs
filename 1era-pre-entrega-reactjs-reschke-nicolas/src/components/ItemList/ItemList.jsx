@@ -16,7 +16,7 @@ const productFiltered = ({products, filterState, handleFilterChange}) => (
             <input 
                 type="text"
                 placeholder="Buscar"
-                className="me-2"
+                className="me-2 searchBar"
                 aria-label="Search"
                 value={filterState} 
                 onChange={handleFilterChange} 
@@ -27,10 +27,10 @@ const productFiltered = ({products, filterState, handleFilterChange}) => (
 
             products.map(product=> 
                 <div key={product.id} className="card w-25 asdasd">
-                        <img src={product.img} className="card-img-top" alt=""/>
+                        <img src={product.img} className="card-img-top img" alt=""/>
                     <div className="card-body">
-                        <h3>Nombre: {product.name}</h3>
-                        <p>Categoría: {product.category}</p>
+                        <h3>{product.name}</h3>
+                        <p>{product.description}</p>
                         <p>Precio: {product.price}</p>
                         <div>
                             <ItemCounter onAdd={onAdd}/>
@@ -47,10 +47,10 @@ const productFiltered = ({products, filterState, handleFilterChange}) => (
             .filter(prod => prod.name.toLowerCase().includes(filterState.toLowerCase()))
             .map(product=> 
                 <div key={product.id} className="card w-25 asdasd">
-                        <img src={product.img} className="card-img-top" alt=""/>
+                        <img src={product.img} className="card-img-top img" alt=""/>
                     <div className="card-body">
-                        <h3>Nombre: {product.name}</h3>
-                        <p>Categoría: {product.category}</p>
+                        <h3>{product.name}</h3>
+                        <p>{product.description}</p>
                         <p>Precio: {product.price}</p>
                         <div>
                             <ItemCounter onAdd={onAdd}/>
