@@ -26,7 +26,7 @@ const productFiltered = ({products, filterState, handleFilterChange}) => (
             filterState === "" ?
 
             products.map(product=> 
-                <div key={product.id} className="card w-25 asdasd">
+                <div key={product.id} className="card w-25 classCard">
                         <img src={product.img} className="card-img-top img" alt=""/>
                     <div className="card-body">
                         <h3>{product.name}</h3>
@@ -36,7 +36,7 @@ const productFiltered = ({products, filterState, handleFilterChange}) => (
                             <ItemCounter onAdd={onAdd}/>
                         </div>
                         <Link to={`/detail/${product.id}`} className="card-footer">
-                            <button className="btn w-100">Detalle</button>
+                            <button className="btn w-60 btn btn-outline-primary">Detalle</button>
                         </Link>
                     </div>
                 </div>
@@ -46,7 +46,7 @@ const productFiltered = ({products, filterState, handleFilterChange}) => (
             products
             .filter(prod => prod.name.toLowerCase().includes(filterState.toLowerCase()))
             .map(product=> 
-                <div key={product.id} className="card w-25 asdasd">
+                <div key={product.id} className="card w-25 classCard">
                         <img src={product.img} className="card-img-top img" alt=""/>
                     <div className="card-body">
                         <h3>{product.name}</h3>
@@ -56,7 +56,7 @@ const productFiltered = ({products, filterState, handleFilterChange}) => (
                             <ItemCounter onAdd={onAdd}/>
                         </div>
                         <Link to={`/detail/${product.id}`} className="card-footer">
-                            <button className="btn w-100">Detalle</button>
+                            <button className="btn w-60 btn btn-outline-primary">Detalle</button>
                         </Link>
                     </div>
                 </div>

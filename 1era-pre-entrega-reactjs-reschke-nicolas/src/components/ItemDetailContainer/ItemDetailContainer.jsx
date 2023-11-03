@@ -25,8 +25,9 @@ export const ItemDetailContainer = () => {
             </div>
             <div className="col-6 text-center mt-5">
                 <p>Nombre: {product.name}</p>
-                <p>Category: {product.category}</p>
-                <p>Precio: {product.price}</p>
+                <p>Categoría {product.category}</p>
+                <p>Detalles {product.description}</p>
+                <p>Precio: $ {product.price}</p>
                 <ItemCounter initial={1} stock={15} onAdd={onAdd}/> 
             </div>            
         </div>

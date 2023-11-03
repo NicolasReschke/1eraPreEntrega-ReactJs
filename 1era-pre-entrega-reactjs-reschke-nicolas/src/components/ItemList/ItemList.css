@@ -1,7 +1,9 @@
-.asdasd{
+.classCard{
     padding: 10px;
     margin: 15px;
     align-items: center;
+    background: linear-gradient(to top, rgb(255, 217, 122), green);
+
 }
 
 .searchBar {
