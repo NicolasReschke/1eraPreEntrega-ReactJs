@@ -1,12 +1,14 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 import NavBar from './components/NavBar/NavBar.jsx'
 import Titulo from './components/Titulo/Titulo.jsx'
-import ItemListContainer from './components/ItemListContainer/ItemListContainer'
-import Formulario from './components/FormContainer/Formulario.jsx'
+import ProductListContainer from './components/ItemListContainer/ItemListContainer'
 import FormContainer from './components/FormContainer/FormContainer.jsx'
+import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer.jsx'
+import { CartContainer } from './components/CartContainer/CartContainer.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
-import './components/FormContainer/Formulario.css'
 import './components/ItemListContainer/ItemListContainer.css'
 import './components/CartWidget/CartWidget.css'
 import './components/NavBar/NavBar.css'
@@ -22,16 +24,19 @@ function App() {
   const subtituloApp= "Expertos en pastas"
 
   return (
-    <>
+    <BrowserRouter>
       <NavBar />
       <Titulo
         titulo={tituloApp}
         subTitulo={subtituloApp}
       />
-      {/* <Formulario /> */}
-      <ItemListContainer saludo="Bienvenidos!!!" />
-      <FormContainer/>
-    </>
+      <Routes>
+        <Route path='/' element={<ProductListContainer saludo="Bienvenidos!!!" /> } />
+        <Route path='/item/ : pid' element={<ItemDetailContainer /> } />
+        <Route path='/cart' element={<CartContainer /> } />
+      </Routes>
+      <FormContainer />
+    </BrowserRouter>
   )
 }
 

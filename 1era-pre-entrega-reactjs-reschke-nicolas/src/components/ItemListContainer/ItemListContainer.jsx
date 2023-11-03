@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { mFetch } from "../../helpers/mFetch"
-// import { ItemCounter } from "../ItemCounter/ItemCounter"
 import { ItemList } from "../ItemList/ItemList";
 
 import "./ItemListContainer.css"
