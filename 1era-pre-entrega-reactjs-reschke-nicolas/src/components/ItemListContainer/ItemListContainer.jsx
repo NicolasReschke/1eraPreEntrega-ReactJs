@@ -29,7 +29,7 @@ console.log(products)
     return (
         <>
             <p className="parrafoBienvenida">{saludo}</p>
-            { loading ? <img src="/assets/sample.gif" alt="" />
+            { loading ? <img className="sample" src="/assets/sample2.gif" alt="" />
             :
             <div className="row justify-content-center">
                 <ItemList products={products} />
