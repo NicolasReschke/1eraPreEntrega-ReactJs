@@ -6,7 +6,7 @@ import "./ItemList.css"
 
 
 const onAdd = cant => {
-    console.log(cant);
+    console.log("cantidad: ", cant);
 }
 
 const productFiltered = ({products, filterState, handleFilterChange}) => (
@@ -72,3 +72,14 @@ export const ItemList = ({products}) => {
             </Filter>
     )
 }
+// function ItemList ({ products }) {
+//     return (
+//         <div>
+//             {products.map ((prod) => (
+//                 <Item key={prod.id} prod={prod} />
+//             ))}
+//         </div>
+//     )
+// }
+
+// export default ItemList

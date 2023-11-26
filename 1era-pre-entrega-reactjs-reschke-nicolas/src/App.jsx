@@ -6,6 +6,7 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import FormContainer from './components/FormContainer/FormContainer.jsx'
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer.jsx'
 import { CartContainer } from './components/CartContainer/CartContainer.jsx'
+import { CartContextProvider } from './contexts/CartContext.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
@@ -15,31 +16,33 @@ import './components/NavBar/NavBar.css'
 
 
 const onAdd = cant => {
-  console.log(cant);
+    console.log(cant);
 }
 
 function App() {
 
-  const tituloApp= "PastaLú"
-  const subtituloApp= "Expertos en pastas"
+    const tituloApp= "PastaLú"
+    const subtituloApp= "Expertos en pastas"
 
-  return (
-    <BrowserRouter>
-      <NavBar />
-      <Titulo
-        titulo={tituloApp}
-        subTitulo={subtituloApp}
-      />
-      <Routes>
-        <Route path='/' element={<ItemListContainer saludo="Bienvenidos!!!" /> } />
-        <Route path='/category/:cid' element={<ItemListContainer saludo="Bienvenidos!!!" /> } />
-        <Route path='/detail/:pid' element={<ItemDetailContainer /> } />
-        <Route path='/cart' element={<CartContainer /> } />
-        <Route path='*' element={<Navigate to='/' /> } />
-      </Routes>
-      <FormContainer />
-    </BrowserRouter>
-  )
+    return (
+        <CartContextProvider>
+            <BrowserRouter>
+                <NavBar />
+                <Titulo
+                    titulo={tituloApp}
+                    subTitulo={subtituloApp}
+                />
+                <Routes>
+                    <Route path='/' element={<ItemListContainer saludo="Bienvenidos!!!" /> } />
+                    <Route path='/category/:cid' element={<ItemListContainer saludo="Bienvenidos!!!" /> } />
+                    <Route path='/detail/:pid' element={<ItemDetailContainer /> } />
+                    <Route path='/cart' element={<CartContainer /> } />
+                    <Route path='*' element={<Navigate to='/' /> } />
+                </Routes>
+                <FormContainer />
+            </BrowserRouter>
+        </CartContextProvider>
+    )
 }
 
 export default App

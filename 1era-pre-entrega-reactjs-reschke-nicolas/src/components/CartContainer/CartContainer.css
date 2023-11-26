@@ -1,0 +1,13 @@
+.imgCart {
+    max-height: 200px;
+}
+
+.divCart {
+    margin: 30px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-style: groove;
+    border-color: red;
+}

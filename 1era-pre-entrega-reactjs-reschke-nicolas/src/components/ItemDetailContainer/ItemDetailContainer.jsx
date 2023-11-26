@@ -2,22 +2,27 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { ItemCounter } from "../ItemCounter/ItemCounter"
 import { mFetch } from "../../helpers/mFetch"
-
-const onAdd = cant => {
-    console.log(cant);
-    }
+import { useCartContext } from "../../contexts/CartContext";
 
 export const ItemDetailContainer = () => {
     const [ product, setProduct ] = useState({})
     const {pid} = useParams()
+    const {addToCart, cartList} = useCartContext()
 
+    
     useEffect(()=>{
         mFetch(pid)
         .then(resultado => setProduct(resultado))
         .catch(error => console.log(error))
         // .finally(()=> setLoading(false))
     }, [])
-        
+    
+    const onAdd = cant => {
+        console.log("cantidad: ", cant);
+        addToCart ( { ...product, cant })
+        }
+    console.log(cartList)
+
     return (
         <div className="row">
             <div className="col-6 mt-5">

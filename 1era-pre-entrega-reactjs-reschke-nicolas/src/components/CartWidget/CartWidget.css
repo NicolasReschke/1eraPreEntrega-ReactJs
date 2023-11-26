@@ -1,10 +1,10 @@
-strong, .carrito {
+.strong1, .carrito {
     color: antiquewhite;
     font-size:x-large;
     padding: 0 10px 0 10px;
 }
 
-strong {
+.strong1 {
     background-color: blueviolet;
     border-radius: 30%;
 }
