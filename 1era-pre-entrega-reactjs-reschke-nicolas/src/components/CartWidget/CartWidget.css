@@ -1,4 +1,4 @@
-.strong1, .carrito {
+.strong1, .cart {
     color: antiquewhite;
     font-size:x-large;
     padding: 0 10px 0 10px;
@@ -7,4 +7,7 @@
 .strong1 {
     background-color: blueviolet;
     border-radius: 30%;
+    margin-right: 10px;
 }
+
+

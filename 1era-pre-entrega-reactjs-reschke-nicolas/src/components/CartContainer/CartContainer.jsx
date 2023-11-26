@@ -4,8 +4,7 @@ import './CartContainer.css'
 
 export const CartContainer = () => {
 
-    const { cartList, emptyCart } = useCartContext()
-    console.log(cartList);
+    const { cartList, emptyCart, totalPrice, deleteItem } = useCartContext()
 
     return (
         <div>
@@ -15,18 +14,21 @@ export const CartContainer = () => {
                                                 {product.name}
                                             </strong>
                                             <div>
-                                                Cantidad de docenas: {product.cant}
+                                                Cantidad: {product.cant}
                                             </div>
                                             <div>
                                                 Precio: {product.price*product.cant}
                                             </div>
-                                            <button className="btn btn-danger">
+                                            <button 
+                                                className="btn btn-danger"
+                                                onClick= {() => deleteItem(product.id)}
+                                            >
                                                 Eliminar <br />
-                                                este producto
+                                                producto
                                             </button>
                                     </div> ) }
                                     <hr/>
-                                    <h3>Precio Total:</h3> 
+                                    <h3>Precio Total: $ {totalPrice()}</h3> 
                                     <button 
                                         className="btn btn-outline-danger"
                                         onClick= {emptyCart}

@@ -39,8 +39,8 @@ export const ItemDetail = ({product}) => {
                         <ItemCounter initial={1} stock={15} onAdd={onAdd}/>
                     :
                         <>
-                            <Link className="btn" to='/cart' >Ir al carrito de compras</Link>
-                            <Link className="btn" to='/' >Seguir comprando</Link>
+                            <Link className="btn btn-outline-success" to='/cart' >Ir al carrito de compras</Link>
+                            <Link className="btn btn-outline-success" to='/' >Seguir comprando</Link>
                         </>
                 }
             </div>            
