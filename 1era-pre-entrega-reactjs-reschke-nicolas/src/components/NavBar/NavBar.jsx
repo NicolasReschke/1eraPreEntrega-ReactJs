@@ -11,7 +11,7 @@ function NavBar () {
         <Navbar expand="lg" className="navbar-dark bg-dark">
             <Container fluid>
                 <img className='imgLogo' src= {imagen} />
-                <Navbar.Brand>PastaLú</Navbar.Brand>
+                <h5>PastaLú</h5>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav

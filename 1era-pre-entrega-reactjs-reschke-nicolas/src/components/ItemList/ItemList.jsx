@@ -1,13 +1,8 @@
-import { Link } from "react-router-dom";
-import { ItemCounter } from "../ItemCounter/ItemCounter"
+
 import { Filter } from "./Filter";
+import { Item } from "../Item/Item";
 
 import "./ItemList.css"
-
-
-const onAdd = cant => {
-    console.log("cantidad: ", cant);
-}
 
 const productFiltered = ({products, filterState, handleFilterChange}) => (
     <>
@@ -25,42 +20,13 @@ const productFiltered = ({products, filterState, handleFilterChange}) => (
         {
             filterState === "" ?
 
-            products.map(product=> 
-                <div key={product.id} className="card w-25 classCard">
-                        <img src={product.img} className="card-img-top img" alt=""/>
-                    <div className="card-body">
-                        <h3>{product.name}</h3>
-                        <p>{product.description}</p>
-                        <p>Precio: {product.price}</p>
-                        <div>
-                            <ItemCounter onAdd={onAdd}/>
-                        </div>
-                        <Link to={`/detail/${product.id}`} className="card-footer">
-                            <button className="btn w-60 btn btn-outline-primary">Detalle</button>
-                        </Link>
-                    </div>
-                </div>
-            )
+            products.map(product=> <Item key={product.id} product={product} /> )
+
         :
-        
+
             products
             .filter(prod => prod.name.toLowerCase().includes(filterState.toLowerCase()))
-            .map(product=> 
-                <div key={product.id} className="card w-25 classCard">
-                        <img src={product.img} className="card-img-top img" alt=""/>
-                    <div className="card-body">
-                        <h3>{product.name}</h3>
-                        <p>{product.description}</p>
-                        <p>Precio: {product.price}</p>
-                        <div>
-                            <ItemCounter onAdd={onAdd}/>
-                        </div>
-                        <Link to={`/detail/${product.id}`} className="card-footer">
-                            <button className="btn w-60 btn btn-outline-primary">Detalle</button>
-                        </Link>
-                    </div>
-                </div>
-            )
+            .map(product=> <Item key={product.id} product={product} /> )
         }
     </>
 )

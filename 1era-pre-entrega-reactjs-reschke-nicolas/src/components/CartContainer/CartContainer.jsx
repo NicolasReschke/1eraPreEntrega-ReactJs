@@ -9,7 +9,7 @@ export const CartContainer = () => {
 
     return (
         <div>
-            { cartList.map(product => <div className="divCart">
+            { cartList.map(product => <div key={product.id} className="divCart">
                                         <img className="imgCart" src={product.img} alt= {product.name} />
                                             <strong>
                                                 {product.name}

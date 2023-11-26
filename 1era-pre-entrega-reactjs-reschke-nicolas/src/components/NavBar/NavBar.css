@@ -15,3 +15,8 @@
         transform: scale(1.10);
     }
 }
+
+h5 {
+    color: antiquewhite;
+    padding: 10px;
+}
