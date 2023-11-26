@@ -4,6 +4,8 @@ import { ItemCounter } from "../ItemCounter/ItemCounter"
 import { mFetch } from "../../helpers/mFetch"
 import { useCartContext } from "../../contexts/CartContext";
 
+import './ItemDetailContainer.css'
+
 export const ItemDetailContainer = () => {
     const [ product, setProduct ] = useState({})
     const {pid} = useParams()
@@ -26,7 +28,7 @@ export const ItemDetailContainer = () => {
     return (
         <div className="row">
             <div className="col-6 mt-5">
-                <img src={product.img} alt="" className="img-fluid"/>
+                <img src={product.img} alt="" className="imgDetail"/>
             </div>
             <div className="col-6 text-center mt-5">
                 <p>Nombre: {product.name}</p>

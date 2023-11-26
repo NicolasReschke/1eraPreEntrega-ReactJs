@@ -15,10 +15,6 @@ import './components/CartWidget/CartWidget.css'
 import './components/NavBar/NavBar.css'
 
 
-const onAdd = cant => {
-    console.log(cant);
-}
-
 function App() {
 
     const tituloApp= "PastaLú"

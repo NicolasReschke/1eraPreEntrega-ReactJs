@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { mFetch } from "../../helpers/mFetch"
 import { ItemList } from "../ItemList/ItemList";
+import { useParams } from "react-router-dom";
+import { Loading } from "../Loading/Loading";
 
 import "./ItemListContainer.css"
-import { useParams } from "react-router-dom";
 
 function ItemListContainer({saludo = "saludo por defecto"}) {
     const [ products, setProducts ] = useState([])
@@ -29,7 +30,8 @@ console.log(products)
     return (
         <>
             <p className="parrafoBienvenida">{saludo}</p>
-            { loading ? <img className="sample" src="/assets/sample2.gif" alt="" />
+            { loading ? 
+                <Loading />
             :
             <div className="row justify-content-center">
                 <ItemList products={products} />
