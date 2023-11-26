@@ -1,0 +1,12 @@
+.imgLike {
+    position:absolute;
+}
+
+.classItemDetail {
+    margin-bottom: 30px;
+    padding: 30px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    mask-border-width: 5px;
+    border-color: black;
+}

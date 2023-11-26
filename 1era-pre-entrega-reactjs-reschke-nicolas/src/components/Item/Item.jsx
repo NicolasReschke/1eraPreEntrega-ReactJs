@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 import { ItemCounter } from "../ItemCounter/ItemCounter"
 import { useCartContext } from "../../contexts/CartContext"
 
-
 export const Item = ({product}) => {
 
     const {addToCart} = useCartContext()
@@ -12,7 +11,6 @@ export const Item = ({product}) => {
         addToCart ( { ...product, cant })
         }
     
-
     return (
         <div className="card w-25 classCard">
                         <img src={product.img} className="card-img-top img" alt=""/>

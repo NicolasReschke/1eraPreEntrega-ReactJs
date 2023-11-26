@@ -1,26 +1,48 @@
+import { Link } from "react-router-dom";
 import { useCartContext } from "../../contexts/CartContext";
 import { ItemCounter } from "../ItemCounter/ItemCounter";
+import { useState } from "react";
+
+import './ItemDetail.css'
 
 export const ItemDetail = ({product}) => {
 
+    const [ isCount, setIsCount ] = useState(true)
     const {addToCart} = useCartContext()
 
     const onAdd = cant => {
         console.log("cantidad: ", cant);
         addToCart ( { ...product, cant })
-        }
+        setIsCount(false)
+    }
+    
+    const [ like, setLike ] = useState(false)
+    const handleLike = () => {
+        setLike(!like)
+    }
 
     return (
-        <div className="row">
-            <div className="col-6 mt-5">
-                <img src={product.img} alt="" className="imgDetail"/>
+        <div className="row classItemDetail">
+            <div className="col-6">
+                <img src={product.img} alt="" className="imgDetail" />
+                <button className="btn btn-outliner imgLike" onClick={handleLike}> ❤ </button>
             </div>
             <div className="col-6 text-center mt-5">
-                <p>Nombre: {product.name}</p>
+                <div>
+                    <strong>{product.name}</strong> 
+                </div>
                 <p>Categoría {product.category}</p>
                 <p>Detalles {product.description}</p>
                 <p>Precio: $ {product.price}</p>
-                <ItemCounter initial={1} stock={15} onAdd={onAdd}/> 
+                {
+                    isCount ?
+                        <ItemCounter initial={1} stock={15} onAdd={onAdd}/>
+                    :
+                        <>
+                            <Link className="btn" to='/cart' >Ir al carrito de compras</Link>
+                            <Link className="btn" to='/' >Seguir comprando</Link>
+                        </>
+                }
             </div>            
         </div>
     )

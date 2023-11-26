@@ -1,3 +1,4 @@
+
 import { useCounter } from "../Hooks/useCounter"
 import './ItemCounter.css'
 
@@ -15,7 +16,9 @@ export const ItemCounter = ({initial=1, stock= 15, onAdd}) => {
                 <p className="botones"><strong> {count} </strong></p>
                 <button className="botones btn btn-outline-danger" onClick={handleSuma}>+</button>
             </div>
-                <button className="botones btn btn-outline-success" onClick={handleOnAdd}>Agregar al carrito</button>
+                <div className="">
+                    <button className="botones btn btn-outline-success" onClick={handleOnAdd}>Agregar al carrito</button>
+                </div>
         </div>
     )
 }

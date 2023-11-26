@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { Loading } from "../Loading/Loading";
 
 import "./ItemListContainer.css"
+import FormContainer from "../FormContainer/FormContainer";
 
 function ItemListContainer({saludo = "saludo por defecto"}) {
     const [ products, setProducts ] = useState([])
@@ -24,7 +25,6 @@ function ItemListContainer({saludo = "saludo por defecto"}) {
             .finally(()=> setLoading(false))
         }
     }, [cid])
-console.log(products)
 
 
     return (
@@ -35,6 +35,7 @@ console.log(products)
             :
             <div className="row justify-content-center">
                 <ItemList products={products} />
+                <FormContainer />
             </div>
             }
         </>

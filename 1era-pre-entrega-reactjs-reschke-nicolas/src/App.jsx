@@ -35,7 +35,6 @@ function App() {
                     <Route path='/cart' element={<CartContainer /> } />
                     <Route path='*' element={<Navigate to='/' /> } />
                 </Routes>
-                <FormContainer />
             </BrowserRouter>
         </CartContextProvider>
     )

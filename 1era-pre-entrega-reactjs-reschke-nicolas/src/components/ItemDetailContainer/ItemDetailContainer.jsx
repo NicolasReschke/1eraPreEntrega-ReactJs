@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { mFetch } from "../../helpers/mFetch"
+import { ItemDetail } from "../ItemDetail/ItemDetail";
+import { Loading } from "../Loading/Loading";
 
 import './ItemDetailContainer.css'
-import { ItemDetail } from "../ItemDetail/ItemDetail";
 
 export const ItemDetailContainer = () => {
     const [ product, setProduct ] = useState({})
+    const [ loading, setLoading ] = useState(true)
+
     const {pid} = useParams()
 
     
@@ -14,13 +17,17 @@ export const ItemDetailContainer = () => {
         mFetch(pid)
         .then(resultado => setProduct(resultado))
         .catch(error => console.log(error))
-        // .finally(()=> setLoading(false))
+        .finally(()=> setLoading(false))
     }, [])
     
 
     return (
         <>
-            <ItemDetail product={product} />
+            { loading ?
+                <Loading />
+            :
+                <ItemDetail product={product} />
+            }
         </>
     )
 }
