@@ -11,3 +11,23 @@
     border-style: groove;
     border-color: red;
 }
+
+.labelClass {
+    margin: 15px;
+        & label{
+            padding: 5px;
+        }
+}
+
+.totalAndformClass {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.totalClass {
+    padding: 30px;
+    & button {
+        margin-top: 15px;
+        padding: 20px;
+    }
+}

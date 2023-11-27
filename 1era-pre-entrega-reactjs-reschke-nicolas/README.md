@@ -8,6 +8,7 @@ PastaLú es una tienda virtual donde podes hacer tus pedidos de manera fácil y 
 
 Demo: https://entrega-final-react-js-reschkenicolas.netlify.app/
 
+
 ## Plugins
 
 | Plugin | README |
@@ -21,10 +22,18 @@ Demo: https://entrega-final-react-js-reschkenicolas.netlify.app/
 | react-icons | [4.11.0] |
 | react-router-dom | [6.18.0] |
 
+## Credenciales de Firebase
+_________________________________________________________________
 
 
+    apiKey: "AIzaSyCfC9sSPwr0f1jfS6GJ7ym56NUxGHSKjfQ",
+    authDomain: "proyfinalreactjsreschkenicolas.firebaseapp.com",
+    projectId: "proyfinalreactjsreschkenicolas",
+    storageBucket: "proyfinalreactjsreschkenicolas.appspot.com",
+    messagingSenderId: "926264830630",
+    appId: "1:926264830630:web:b3eadda7e215c720a4a267"
 
-
+_________________________________________________________________
 
 ### React + Vite
 
