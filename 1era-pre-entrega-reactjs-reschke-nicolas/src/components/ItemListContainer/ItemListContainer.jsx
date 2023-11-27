@@ -13,27 +13,16 @@ function ItemListContainer({saludo = "saludo por defecto"}) {
     const { cid } = useParams()
 
     useEffect (()=>{
-        if (cid){
             const dbFirestore = getFirestore()
             const queryCollection = collection(dbFirestore, 'products')
-            const queryFilter = query(queryCollection, where('category', '==', cid))
+            
+            const queryFilter = cid ? query(queryCollection, where('category', '==', cid)) : queryCollection
 
             getDocs(queryFilter)
             .then(res => { setProducts(res.docs.map(product => ({ id: product.id, ...product.data() }))) })
             .catch(err => console.log(err))
             .finally(()=> setLoading(false))
-
-        }else {
-            const dbFirestore = getFirestore()
-            const queryCollection = collection(dbFirestore, 'products')
-
-            getDocs(queryCollection)
-            .then(res => setProducts( res.docs.map(product => ({ id: product.id, ...product.data() }))))
-            .catch(err => console.log(err))
-            .finally(() => setLoading(false))
-        }
     }, [cid])
-
     
     return (
         <>

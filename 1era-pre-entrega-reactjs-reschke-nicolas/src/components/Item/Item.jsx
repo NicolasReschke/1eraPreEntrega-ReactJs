@@ -7,7 +7,6 @@ export const Item = ({product}) => {
     const {addToCart} = useCartContext()
 
     const onAdd = cant => {
-        console.log("cantidad: ", cant);
         addToCart ( { ...product, cant })
         }
     
@@ -16,8 +15,7 @@ export const Item = ({product}) => {
                         <img src={product.img} className="card-img-top img" alt=""/>
                     <div className="card-body">
                         <h3>{product.name}</h3>
-                        {/* <p>{product.description}</p> */}
-                        <p>Precio por docena: {product.price}</p>
+                        <p>Precio: $ {product.price}</p>
                         <div>
                             <ItemCounter initial={1} stock={15} onAdd={onAdd}/>
                         </div>

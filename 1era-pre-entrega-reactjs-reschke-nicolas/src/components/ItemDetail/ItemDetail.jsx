@@ -12,7 +12,6 @@ export const ItemDetail = ({product}) => {
     const {addToCart} = useCartContext()
 
     const onAdd = cant => {
-        console.log("cantidad: ", cant);
         addToCart ( { ...product, cant })
         setIsCount(false)
     }
@@ -32,8 +31,8 @@ export const ItemDetail = ({product}) => {
                 <div>
                     <strong>{product.name}</strong> 
                 </div>
-                <p>Categoría {product.category}</p>
-                <p>Detalles {product.description}</p>
+                <p>Categoría: {product.category}</p>
+                <p>Detalle: {product.description}</p>
                 <p>Precio: $ {product.price}</p>
                 {
                     isCount ?

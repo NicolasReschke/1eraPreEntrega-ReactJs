@@ -6,11 +6,9 @@ export const CartWidget = () => {
 
     const {sumQuantities} = useCartContext()
     return (
-        <div>
-            <a className='cart' href="">
+            <div className='cart'>
                 <strong className='strong1'> {sumQuantities()}</strong>
                 <BsFillCartCheckFill />
-            </a>
-        </div>
+            </div>
     )
 }
