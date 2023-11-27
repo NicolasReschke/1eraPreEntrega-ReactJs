@@ -1,0 +1,7 @@
+.classCard{
+    padding: 10px;
+    margin: 15px;
+    align-items: center;
+    background: linear-gradient(to top, rgb(214, 133, 133), rgb(243, 196, 93));
+}
+

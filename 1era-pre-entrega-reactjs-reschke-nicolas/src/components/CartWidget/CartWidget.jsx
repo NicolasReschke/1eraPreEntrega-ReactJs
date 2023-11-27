@@ -1,6 +1,8 @@
-
 import { BsFillCartCheckFill } from 'react-icons/bs'
+
 import { useCartContext } from '../../contexts/CartContext'
+
+import './CartWidget.css'
 
 export const CartWidget = () => {
 

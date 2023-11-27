@@ -1,5 +1,5 @@
-
 import { useCounter } from "../Hooks/useCounter"
+
 import './ItemCounter.css'
 
 export const ItemCounter = ({initial=1, stock= 15, onAdd}) => {

@@ -2,9 +2,10 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
+
 import imagen from '../../assets/LOGO1.jpg'
 import { CartWidget } from '../CartWidget/CartWidget';
-import { Link } from 'react-router-dom';
 
 const categorys = [
     {id: '1', name: 'Ñoquis', category: 'ñoquis'},

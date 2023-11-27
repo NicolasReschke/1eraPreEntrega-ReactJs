@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import NavBar from './components/NavBar/NavBar.jsx'
-import Titulo from './components/Titulo/Titulo.jsx'
+import Title from './components/Title/Title.jsx'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer.jsx'
 import { CartContainer } from './components/CartContainer/CartContainer.jsx'
@@ -16,16 +16,16 @@ import './components/NavBar/NavBar.css'
 
 function App() {
 
-    const tituloApp= "PastaLú"
-    const subtituloApp= "Expertos en pastas"
+    const titleApp= "PastaLú"
+    const subtitleApp= "Expertos en pastas"
 
     return (
         <CartContextProvider>
             <BrowserRouter>
                 <NavBar />
-                <Titulo
-                    titulo={tituloApp}
-                    subTitulo={subtituloApp}
+                <Title
+                    title={titleApp}
+                    subTitle={subtitleApp}
                 />
                 <Routes>
                     <Route path='/' element={<ItemListContainer saludo="Bienvenidos!!!" /> } />

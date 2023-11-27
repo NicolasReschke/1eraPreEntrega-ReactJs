@@ -1,4 +1,18 @@
-# React + Vite
+# Entrega final - React Js - Reschke Nicolas
+
+## Ecommerce PastaLú - Tienda Virtual
+
+[![N|Solid](https://www.48hourslogo.com/48hourslogo_data/2018/06/22/74312_1529625820.jpg)](https://nicolasreschke-cv-online.netlify.app/)
+
+PastaLú es una tienda virtual donde podes hacer tus pedidos de manera fácil y comoda.
+
+
+
+
+
+
+
+### React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom"
+
 import { ItemCounter } from "../ItemCounter/ItemCounter"
 import { useCartContext } from "../../contexts/CartContext"
+
+import './Item.css'
 
 export const Item = ({product}) => {
 

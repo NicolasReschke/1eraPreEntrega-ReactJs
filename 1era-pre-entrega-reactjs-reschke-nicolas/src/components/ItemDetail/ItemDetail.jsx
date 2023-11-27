@@ -1,10 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { useCartContext } from "../../contexts/CartContext";
 import { ItemCounter } from "../ItemCounter/ItemCounter";
-import { useState } from "react";
 
 import './ItemDetail.css'
-
 
 export const ItemDetail = ({product}) => {
 

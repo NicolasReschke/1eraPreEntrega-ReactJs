@@ -1,4 +1,3 @@
-
 export const Form = ({formData, handleOnChange, errors, validateForm}) => {
 
     const handleOnSubmit = (evt) => {
