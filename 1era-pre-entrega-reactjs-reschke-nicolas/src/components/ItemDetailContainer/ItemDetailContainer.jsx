@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useParams } from "react-router-dom";
-import { mFetch } from "../../helpers/mFetch"
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { Loading } from "../Loading/Loading";
 
@@ -9,14 +9,14 @@ import './ItemDetailContainer.css'
 export const ItemDetailContainer = () => {
     const [ product, setProduct ] = useState({})
     const [ loading, setLoading ] = useState(true)
+    const { pid } = useParams()
 
-    const {pid} = useParams()
-
-    
-    useEffect(()=>{
-        mFetch(pid)
-        .then(resultado => setProduct(resultado))
-        .catch(error => console.log(error))
+    useEffect(() =>{
+        const dbFirestore = getFirestore()
+        const queryDoc = doc(dbFirestore, 'products', pid)
+        getDoc(queryDoc)
+        .then(res => setProduct( {id: res.id, ...res.data() } ))
+        .catch(err => console.log(err))
         .finally(()=> setLoading(false))
     }, [])
     

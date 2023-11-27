@@ -39,9 +39,6 @@ function NavBar () {
                             <Link className='dropdown-item' to='/category/sorrentinos'>
                                 Sorrentinos
                             </Link>
-                            <Link className='dropdown-item' to='/category/canelones'>
-                                Canelones
-                            </Link>
                             <Link className='dropdown-item' to='/category/empanadas'>
                                 Empanadas
                             </Link>

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import { mFetch } from "../../helpers/mFetch"
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import { ItemList } from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import { Loading } from "../Loading/Loading";
+import FormContainer from "../FormContainer/FormContainer";
 
 import "./ItemListContainer.css"
-import FormContainer from "../FormContainer/FormContainer";
 
 function ItemListContainer({saludo = "saludo por defecto"}) {
     const [ products, setProducts ] = useState([])
@@ -14,19 +14,27 @@ function ItemListContainer({saludo = "saludo por defecto"}) {
 
     useEffect (()=>{
         if (cid){
-            mFetch()
-            .then(resultado => setProducts(resultado.filter(product=>product.category === cid)))
-            .catch(error => console.log(error))
+            const dbFirestore = getFirestore()
+            const queryCollection = collection(dbFirestore, 'products')
+            const queryFilter = query(queryCollection, where('category', '==', cid))
+
+            getDocs(queryFilter)
+            .then(res => { setProducts(res.docs.map(product => ({ id: product.id, ...product.data() }))) })
+            .catch(err => console.log(err))
             .finally(()=> setLoading(false))
+
         }else {
-            mFetch()
-            .then(resultado => setProducts(resultado))
-            .catch(error => console.log(error))
-            .finally(()=> setLoading(false))
+            const dbFirestore = getFirestore()
+            const queryCollection = collection(dbFirestore, 'products')
+
+            getDocs(queryCollection)
+            .then(res => setProducts( res.docs.map(product => ({ id: product.id, ...product.data() }))))
+            .catch(err => console.log(err))
+            .finally(() => setLoading(false))
         }
     }, [cid])
 
-
+    
     return (
         <>
             <p className="parrafoBienvenida">{saludo}</p>

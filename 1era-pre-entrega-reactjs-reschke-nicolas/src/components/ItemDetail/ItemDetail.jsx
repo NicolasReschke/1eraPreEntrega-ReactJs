@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import './ItemDetail.css'
 
+
 export const ItemDetail = ({product}) => {
 
     const [ isCount, setIsCount ] = useState(true)
