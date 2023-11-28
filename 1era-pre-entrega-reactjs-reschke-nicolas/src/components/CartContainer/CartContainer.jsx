@@ -5,6 +5,7 @@ import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { useCartContext } from '../../contexts/CartContext';
 
 import './CartContainer.css'
+import { ItemCart } from '../Itemcart/ItemCart';
 
 export const CartContainer = () => {
     const [formData, setFormData] = useState({
@@ -23,6 +24,11 @@ export const CartContainer = () => {
         order.buyer = formData
         order.items = cartList.map( ( {id, price, cant, name} ) => ( { id: id, price: price, name: name, cant: cant } ) )
         order.total = totalPrice()
+
+        if (formData.email !== formData.email2) {
+            alert('Los correos electrónicos deben ser iguales!!')
+            return
+        }
 
         const db = getFirestore()
         const queryCollection = collection(db, 'orders')
@@ -50,46 +56,28 @@ export const CartContainer = () => {
 
     return (
         <>
-            {isId !== "" && <h2> El id de la compra es: <strong> {isId} </strong> </h2>}
+            {isId !== "" && <div>
+                <h2>
+                    El id de la compra es: <br/> 
+                    <strong>
+                        {isId}
+                    </strong>
+                </h2>
+                <img className='tyBuy' src="https://ciedi.edu.co/wp-content/uploads/2022/09/0281596D-A9C4-41D1-AD87-F831868CDCF5.gif" alt="" /></div> 
+            }
             {cartList.length == 0 ?
                 <>
-                    <h2>No hay productos en el carrito</h2>
-                    <br />
-                    <Link className='btn btn-primary' to='/' >Volver a la tienda</Link>
+                <Link className='btn btn-primary' to='/' >Volver a la tienda</Link>
+                    <div className='empyCartClass'>
+                        <h2>No hay productos en el carrito</h2>
+                    </div>
                 </>
                 :
                 <div>
-                    { cartList.map(product => <div key={product.id} className="divCart">
-                                                <img className="imgCart" src={product.img} alt= {product.name} />
-                                                    <strong>
-                                                        {product.name}
-                                                    </strong>
-                                                    <div>
-                                                    <button 
-                                                        className="btn btn-danger buttonClass"
-                                                        onClick= {() => addItem(product.id)}
-                                                    >
-                                                        ➕
-                                                    </button>
-                                                        Cantidad: <strong>{product.cant}</strong>
-                                                    <button 
-                                                        className="btn btn-danger buttonClass"
-                                                        onClick= {() => deleteItem(product.id)}
-                                                    >
-                                                        ➖
-                                                    </button>
-                                                    </div>
-                                                    <div>
-                                                        Precio: <strong>${product.price*product.cant}</strong>
-                                                    </div>
-                                                    <button 
-                                                        className="btn btn-danger"
-                                                        onClick= { ()=> deleteItems(product.id) }
-                                                    >
-                                                        ✖
-                                                    </button>
-                                            </div> ) }
-                                            <hr/>
+                    { cartList.map(product =>
+                                            <ItemCart key={product.id} product={product} />
+                                        )
+                                    }
                                             <div className='totalAndformClass'>
                                                 <div className='totalClass'>
                                                     { totalPrice()!== 0 && <h3>Precio total: $ {totalPrice()} </h3> }
@@ -122,11 +110,11 @@ export const CartContainer = () => {
                                                         </div>
                                                         <div className='labelClass'>
                                                             <label>Ingrese su email: </label>
-                                                            <input type="text" name='email' required onChange={handleOnChange} value={formData.email} />
+                                                            <input type="email" name='email' required onChange={handleOnChange} value={formData.email} />
                                                         </div>
                                                         <div className='labelClass'>
-                                                            <label>Repetir su email: </label>
-                                                            <input type="text" name='email2' required onChange={handleOnChange} value={formData.email2} />
+                                                            <label>Reingresar su email: </label>
+                                                            <input type="email" name='email2' required onChange={handleOnChange} value={formData.email2} />
                                                         </div>
                                                         <button className='btn btn-primary'>
                                                             Terminar compra
