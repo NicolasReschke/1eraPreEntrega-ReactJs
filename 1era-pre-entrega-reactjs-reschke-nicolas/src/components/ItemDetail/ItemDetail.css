@@ -10,3 +10,7 @@
     mask-border-width: 5px;
     border-color: black;
 }
+
+.buttonItemDetail {
+    margin: 20px;
+}

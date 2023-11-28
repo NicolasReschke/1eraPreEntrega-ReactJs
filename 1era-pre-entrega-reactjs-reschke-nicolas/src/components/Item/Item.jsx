@@ -15,7 +15,9 @@ export const Item = ({product}) => {
     
     return (
         <div className="card w-25 classCard">
-                        <img src={product.img} className="card-img-top img" alt=""/>
+                    <Link to={`/detail/${product.id}`} >
+                        <img src={product.img} className="card-img-top img" alt={product.name}/>
+                    </Link>
                     <div className="card-body">
                         <h3>{product.name}</h3>
                         <p>Precio: $ {product.price}</p>
@@ -23,7 +25,7 @@ export const Item = ({product}) => {
                             <ItemCounter initial={1} stock={15} onAdd={onAdd}/>
                         </div>
                         <Link to={`/detail/${product.id}`} className="card-footer">
-                            <button className="btn w-60 btn btn-outline-primary">Detalle</button>
+                            <button className="btn w-60 btn btn-primary">Detalle</button>
                         </Link>
                     </div>
                 </div>

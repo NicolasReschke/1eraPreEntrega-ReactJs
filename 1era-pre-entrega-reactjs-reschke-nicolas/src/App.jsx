@@ -29,7 +29,7 @@ function App() {
                 />
                 <Routes>
                     <Route path='/' element={<ItemListContainer saludo="Bienvenidos!!!" /> } />
-                    <Route path='/category/:cid' element={<ItemListContainer saludo="Bienvenidos!!!" /> } />
+                    <Route path='/category/:cid' element={<ItemListContainer saludo="Las mejores pastas, al mejor precio!!" /> } />
                     <Route path='/detail/:pid' element={<ItemDetailContainer /> } />
                     <Route path='/cart' element={<CartContainer /> } />
                     <Route path='*' element={<Navigate to='/' /> } />

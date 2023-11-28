@@ -33,7 +33,6 @@ function ItemListContainer({saludo = "saludo por defecto"}) {
             :
             <div className="row justify-content-center">
                 <ItemList products={products} />
-                <FormContainer />
             </div>
             }
         </>

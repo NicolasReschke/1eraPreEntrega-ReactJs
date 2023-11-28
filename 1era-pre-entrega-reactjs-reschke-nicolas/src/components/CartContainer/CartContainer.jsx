@@ -15,7 +15,7 @@ export const CartContainer = () => {
     })
 
     const [isId, setIsId] = useState("")
-    const { cartList, emptyCart, totalPrice, deleteItem } = useCartContext()
+    const { cartList, emptyCart, totalPrice, deleteItem, addItem, deleteItems } = useCartContext()
 
     const finishOrder = (evt) => {
         evt.preventDefault()
@@ -50,11 +50,12 @@ export const CartContainer = () => {
 
     return (
         <>
-            {isId !== "" && <h2> El id de la compra es: {isId} </h2>}
+            {isId !== "" && <h2> El id de la compra es: <strong> {isId} </strong> </h2>}
             {cartList.length == 0 ?
                 <>
                     <h2>No hay productos en el carrito</h2>
-                    <Link to='/' >Volver a la tienda</Link>
+                    <br />
+                    <Link className='btn btn-primary' to='/' >Volver a la tienda</Link>
                 </>
                 :
                 <div>
@@ -64,17 +65,28 @@ export const CartContainer = () => {
                                                         {product.name}
                                                     </strong>
                                                     <div>
-                                                        Cantidad: {product.cant}
+                                                    <button 
+                                                        className="btn btn-danger buttonClass"
+                                                        onClick= {() => addItem(product.id)}
+                                                    >
+                                                        ➕
+                                                    </button>
+                                                        Cantidad: <strong>{product.cant}</strong>
+                                                    <button 
+                                                        className="btn btn-danger buttonClass"
+                                                        onClick= {() => deleteItem(product.id)}
+                                                    >
+                                                        ➖
+                                                    </button>
                                                     </div>
                                                     <div>
-                                                        Precio: {product.price*product.cant}
+                                                        Precio: <strong>${product.price*product.cant}</strong>
                                                     </div>
                                                     <button 
                                                         className="btn btn-danger"
-                                                        onClick= {() => deleteItem(product.id)}
+                                                        onClick= { ()=> deleteItems(product.id) }
                                                     >
-                                                        Eliminar <br />
-                                                        producto
+                                                        ✖
                                                     </button>
                                             </div> ) }
                                             <hr/>
@@ -116,7 +128,9 @@ export const CartContainer = () => {
                                                             <label>Repetir su email: </label>
                                                             <input type="text" name='email2' required onChange={handleOnChange} value={formData.email2} />
                                                         </div>
-                                                        <button>Terminar compra</button>
+                                                        <button className='btn btn-primary'>
+                                                            Terminar compra
+                                                        </button>
                                                     </form>
                                                 </div>
                                             </div>
