@@ -31,3 +31,10 @@
         padding: 20px;
     }
 }
+
+.buttonClass {
+    margin: 30px;
+    & button {
+        margin: 20px;
+    }
+}

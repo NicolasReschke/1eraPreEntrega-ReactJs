@@ -82,12 +82,21 @@ export const CartContainer = () => {
                                                 <div className='totalClass'>
                                                     { totalPrice()!== 0 && <h3>Precio total: $ {totalPrice()} </h3> }
                                                     { totalPrice() == 0 && <h3>Tu carrito está vacío</h3> }
-                                                    <button 
-                                                        className="btn btn-outline-danger"
-                                                        onClick= {emptyCart}
-                                                    >
-                                                            Vaciar carrito
-                                                    </button>
+                                                    <div className='buttonClass'>
+                                                        <button className="btn btn-success">
+                                                            <Link className='btn'
+                                                                to={'/'}
+                                                            >
+                                                                    ⬅ Seguir comprando...
+                                                            </Link>
+                                                        </button>
+                                                        <button 
+                                                            className="btn btn-danger"
+                                                            onClick= {emptyCart}
+                                                        >
+                                                                Vaciar carrito
+                                                        </button>
+                                                    </div>
                                                 </div>
                                                 <div>
                                                     <form onSubmit={finishOrder}>
