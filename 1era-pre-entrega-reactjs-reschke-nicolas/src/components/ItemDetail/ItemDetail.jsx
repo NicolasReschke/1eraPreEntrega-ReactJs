@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useCartContext } from "../../contexts/CartContext";
 import { ItemCounter } from "../ItemCounter/ItemCounter";
+import FormContainer from "../FormContainer/FormContainer";
 
 import './ItemDetail.css'
 
@@ -43,7 +44,8 @@ export const ItemDetail = ({product}) => {
                             <Link className="btn btn-success buttonItemDetail" to='/cart' >Ir al carrito de compras</Link>
                         </>
                 }
-            </div>            
+            </div>
+            <FormContainer />
         </div>
     )
 }

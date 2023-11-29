@@ -63,7 +63,7 @@ export const CartContainer = () => {
                         {isId}
                     </strong>
                 </h2>
-                <img className='tyBuy' src="https://ciedi.edu.co/wp-content/uploads/2022/09/0281596D-A9C4-41D1-AD87-F831868CDCF5.gif" alt="" /></div> 
+                <img className='tyBuy' src="/assets/sample3.gif" alt="" /></div>
             }
             {cartList.length == 0 ?
                 <>

@@ -1,3 +1,5 @@
+import './Form.css'
+
 export const Form = ({formData, handleOnChange, errors, validateForm}) => {
 
     const handleOnSubmit = (evt) => {
@@ -8,8 +10,8 @@ export const Form = ({formData, handleOnChange, errors, validateForm}) => {
 
     return (
         <>
-        <div>
-            <h3>Para mas información, dejanos tu contacto</h3>
+        <div className="formClass">
+            <h3>Si queres realizar algún comentario sobre nuestros productos, dejanos tu contacto:</h3>
         </div>
         <div>
             <form onSubmit={handleOnSubmit}>            

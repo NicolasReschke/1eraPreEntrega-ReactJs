@@ -20,7 +20,7 @@ export const Item = ({product}) => {
                     </Link>
                     <div className="card-body">
                         <h3>{product.name}</h3>
-                        <p>Precio: $ {product.price}</p>
+                        <p>Precio: <strong> ${product.price}</strong></p>
                         <div>
                             <ItemCounter initial={1} stock={15} onAdd={onAdd}/>
                         </div>
