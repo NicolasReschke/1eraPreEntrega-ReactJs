@@ -9,6 +9,7 @@ PastaLú es una tienda virtual donde podes hacer tus pedidos de manera fácil y 
 Demo: https://entrega-final-react-js-reschkenicolas.netlify.app/
 
 
+
 ## Plugins
 
 | Plugin | README |
