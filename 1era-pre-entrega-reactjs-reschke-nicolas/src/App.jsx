@@ -4,7 +4,7 @@ import NavBar from './components/NavBar/NavBar.jsx'
 import Title from './components/Title/Title.jsx'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer.jsx'
-import { CartContainer } from './components/CartContainer/CartContainer.jsx'
+import CartContainer from './components/CartContainer/CartContainer.jsx'
 import { CartContextProvider } from './contexts/CartContext.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css'

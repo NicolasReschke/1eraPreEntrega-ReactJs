@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import { useCartContext } from "../../contexts/CartContext";
 import { ItemCounter } from "../ItemCounter/ItemCounter";
-import FormContainer from "../FormContainer/FormContainer";
 
 import './ItemDetail.css'
 
@@ -37,7 +36,10 @@ export const ItemDetail = ({product}) => {
                 <p>Precio: $ {product.price}</p>
                 {
                     isCount ?
-                        <ItemCounter initial={1} stock={15} onAdd={onAdd}/>
+                        <>
+                            <ItemCounter initial={1} stock={15} onAdd={onAdd}/>
+                            <Link className="btn btn-primary buttonItemDetail" to='/' >Volver a la tienda!</Link>
+                        </>
                     :
                         <>
                             <Link className="btn btn-primary buttonItemDetail" to='/' >Seguir comprando</Link>
@@ -45,7 +47,6 @@ export const ItemDetail = ({product}) => {
                         </>
                 }
             </div>
-            <FormContainer />
         </div>
     )
 }
