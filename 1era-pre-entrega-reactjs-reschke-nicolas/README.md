@@ -24,17 +24,8 @@ Demo: https://entrega-final-react-js-reschkenicolas.netlify.app/
 | react-router-dom | [6.18.0] |
 
 ## Credenciales de Firebase
-_________________________________________________________________
 
-
-    apiKey: "AIzaSyCfC9sSPwr0f1jfS6GJ7ym56NUxGHSKjfQ",
-    authDomain: "proyfinalreactjsreschkenicolas.firebaseapp.com",
-    projectId: "proyfinalreactjsreschkenicolas",
-    storageBucket: "proyfinalreactjsreschkenicolas.appspot.com",
-    messagingSenderId: "926264830630",
-    appId: "1:926264830630:web:b3eadda7e215c720a4a267"
-
-_________________________________________________________________
+*Ver en el mensaje de la plataforma
 
 ### React + Vite
 
