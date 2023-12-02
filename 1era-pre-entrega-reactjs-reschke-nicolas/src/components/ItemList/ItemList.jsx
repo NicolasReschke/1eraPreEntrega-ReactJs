@@ -1,5 +1,5 @@
-import { Filter } from "./Filter";
-import { Item } from "../Item/Item";
+import { Filter } from "./Filter"
+import { Item } from "../Item/Item"
 
 import "./ItemList.css"
 
@@ -14,15 +14,12 @@ const productFiltered = ({products, filterState, handleFilterChange}) => (
                 aria-label="Search"
                 value={filterState} 
                 onChange={handleFilterChange} 
-                />
+            />
         </div>
         {
             filterState === "" ?
-
             products.map(product=> <Item key={product.id} product={product} /> )
-
         :
-
             products
             .filter(prod => prod.name.toLowerCase().includes(filterState.toLowerCase()))
             .map(product=> <Item key={product.id} product={product} /> )

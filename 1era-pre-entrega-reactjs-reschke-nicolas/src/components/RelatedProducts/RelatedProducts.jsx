@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getFirestore, collection, getDocs, query, where, limit } from 'firebase/firestore';
+import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+
+import { getFirestore, collection, getDocs, query, where, limit } from 'firebase/firestore'
 
 import './RelatedProducts.css'
 
 const RelatedProducts = ({ currentCategoryId, productId }) => {
-    const [relatedProducts, setRelatedProducts] = useState([]);
-    const dbFirestore = getFirestore();
+    const [relatedProducts, setRelatedProducts] = useState([])
+    const dbFirestore = getFirestore()
 
     useEffect(() => {
         const fetchRelatedProducts = async () => {
@@ -14,23 +15,22 @@ const RelatedProducts = ({ currentCategoryId, productId }) => {
                 collection(dbFirestore, 'products'),
                 where('category', '==', currentCategoryId),
                 limit(5)
-            );
+            )
         
             try {
                 const relatedProductsSnapshot = await getDocs(relatedQuery);
                 const relatedProductsData = relatedProductsSnapshot.docs
                 .map(doc => ({ id: doc.id, ...doc.data() }))
-                .filter(product => product.id !== productId); // Filtra el producto actualmente seleccionado
+                .filter(product => product.id !== productId);
                 
-                setRelatedProducts(relatedProductsData);
+                setRelatedProducts(relatedProductsData)
             } catch (err) {
-                console.err("Error fetching related products:", err);
+                console.err("Error fetching related products:", err)
             }
-        };
+        }
 
-        // Llama a la función para obtener los productos relacionados
         fetchRelatedProducts();
-    }, [currentCategoryId, productId]);
+    }, [currentCategoryId, productId])
 
     return (
         <div className="relatedProductsContainer">
@@ -47,4 +47,4 @@ const RelatedProducts = ({ currentCategoryId, productId }) => {
     );
 };
 
-export default RelatedProducts;
+export default RelatedProducts

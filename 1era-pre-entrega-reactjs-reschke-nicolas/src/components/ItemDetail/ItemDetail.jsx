@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
-import { useCartContext } from "../../contexts/CartContext";
-import { ItemCounter } from "../ItemCounter/ItemCounter";
-import RelatedProducts from "../RelatedProducts/RelatedProducts";
+import { useCartContext } from "../../contexts/CartContext"
+import { ItemCounter } from "../ItemCounter/ItemCounter"
+import RelatedProducts from "../RelatedProducts/RelatedProducts"
 
 import './ItemDetail.css'
 
@@ -13,8 +13,8 @@ export const ItemDetail = ({product}) => {
     const [like, setLike] = useState(false)
 
     useEffect(() => {
-        const likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || {};
-        setLike(likedProducts[product.id] || false);
+        const likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || {}
+        setLike(likedProducts[product.id] || false)
     }, [product.id])
 
     const onAdd = cant => {
@@ -23,8 +23,8 @@ export const ItemDetail = ({product}) => {
     }
     
     const handleLike = () => {
-        setLike(!like);
-        localStorage.setItem('likedProducts', JSON.stringify({ [product.id]: !like }));
+        setLike(!like)
+        localStorage.setItem('likedProducts', JSON.stringify({ [product.id]: !like }))
     }
 
     return (
@@ -55,7 +55,7 @@ export const ItemDetail = ({product}) => {
                         </>
                 }
             </div>
-                <RelatedProducts currentCategoryId={product.category} productId={product.id} />
+            <RelatedProducts currentCategoryId={product.category} productId={product.id} />
         </div>
     )
 }

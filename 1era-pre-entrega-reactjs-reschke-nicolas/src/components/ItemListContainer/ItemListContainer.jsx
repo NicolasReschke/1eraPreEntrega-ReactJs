@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"
 
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
-import { ItemList } from "../ItemList/ItemList";
-import { Loading } from "../Loading/Loading";
+import { ItemList } from "../ItemList/ItemList"
+import { Loading } from "../Loading/Loading"
 
 import "./ItemListContainer.css"
 
@@ -13,15 +13,15 @@ function ItemListContainer({saludo = "saludo por defecto"}) {
     const { cid } = useParams()
 
     useEffect (()=>{
-            const dbFirestore = getFirestore()
-            const queryCollection = collection(dbFirestore, 'products')
-            
-            const queryFilter = cid ? query(queryCollection, where('category', '==', cid)) : queryCollection
+        const dbFirestore = getFirestore()
+        const queryCollection = collection(dbFirestore, 'products')
+        
+        const queryFilter = cid ? query(queryCollection, where('category', '==', cid)) : queryCollection
 
-            getDocs(queryFilter)
-            .then(res => { setProducts(res.docs.map(product => ({ id: product.id, ...product.data() }))) })
-            .catch(err => console.log(err))
-            .finally(()=> setLoading(false))
+        getDocs(queryFilter)
+        .then(res => { setProducts(res.docs.map(product => ({ id: product.id, ...product.data() }))) })
+        .catch(err => console.log(err))
+        .finally(()=> setLoading(false))
     }, [cid])
     
     return (

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import { useCartContext } from '../../contexts/CartContext'
 
@@ -33,25 +34,25 @@ const OrderForm = () => {
         const queryCollection = collection(db, 'orders')
 
         addDoc(queryCollection, order)
-            .then(({ id }) => setIsId(id))
-            .catch(err => console.log(err))
-            .finally(() => {
-                setFormData({
-                    name: '',
-                    phone: '',
-                    email: '',
-                    email2: ''
-                })
-                emptyCart();
+        .then(({ id }) => setIsId(id))
+        .catch(err => console.log(err))
+        .finally(() => {
+            setFormData({
+                name: '',
+                phone: '',
+                email: '',
+                email2: ''
             })
+            emptyCart()
+        })
     }
 
     const handleOnChange = (evt) => {
-                setFormData({
-                    ...formData,
-                    [evt.target.name]: evt.target.value
-                });
-            };
+        setFormData({
+            ...formData,
+            [evt.target.name]: evt.target.value
+        });
+    };
 
     const copyText = () => {
         const textToCopy = isId
@@ -80,7 +81,7 @@ const OrderForm = () => {
                             <img className='tyBuy' src="/assets/sample3.gif" alt="" />
                         </div>
                     </div>
-            ) : (
+                ) : (
                     <div className='emptyCartClass'>
                         <h3>
                             Tu carrito está vacío 😓
@@ -143,7 +144,7 @@ const OrderForm = () => {
         <div>
             {cartList.length > 0 ? renderNotEmptyCart() : renderEmptyCart()}
         </div>
-    );
+    )
 }
 
 export default OrderForm

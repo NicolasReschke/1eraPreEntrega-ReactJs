@@ -1,6 +1,6 @@
-import React from 'react';
-import CartItem from '../CartItem/CartItem';
-import OrderForm from '../OrderForm/OrderForm';
+import React from 'react'
+import CartItem from '../CartItem/CartItem'
+import OrderForm from '../OrderForm/OrderForm'
 
 import './CartContainer.css'
 
@@ -15,4 +15,4 @@ const CartContainer = () => {
     )
 }
 
-export default CartContainer;
+export default CartContainer
