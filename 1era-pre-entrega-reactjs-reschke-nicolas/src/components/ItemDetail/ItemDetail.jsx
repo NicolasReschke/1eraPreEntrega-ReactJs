@@ -1,31 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useCartContext } from "../../contexts/CartContext";
 import { ItemCounter } from "../ItemCounter/ItemCounter";
+import RelatedProducts from "../RelatedProducts/RelatedProducts";
 
 import './ItemDetail.css'
 
 export const ItemDetail = ({product}) => {
-
     const [ isCount, setIsCount ] = useState(true)
     const {addToCart} = useCartContext()
+    const [like, setLike] = useState(false)
+
+    useEffect(() => {
+        const likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || {};
+        setLike(likedProducts[product.id] || false);
+    }, [product.id])
 
     const onAdd = cant => {
         addToCart ( { ...product, cant })
         setIsCount(false)
     }
     
-    const [ like, setLike ] = useState(false)
     const handleLike = () => {
-        setLike(!like)
+        setLike(!like);
+        localStorage.setItem('likedProducts', JSON.stringify({ [product.id]: !like }));
     }
 
     return (
         <div className="row classItemDetail">
             <div className="col-6">
                 <img src={product.img} alt="" className="imgDetail" />
-                <button className="btn btn-outliner imgLike" onClick={handleLike}> ❤ </button>
+                <button className="btn btn-outliner imgLike" onClick={handleLike}>
+                    {like ? '❤️' : '🤍'}
+                </button>
             </div>
             <div className="col-6 text-center mt-5">
                 <div>
@@ -47,6 +55,7 @@ export const ItemDetail = ({product}) => {
                         </>
                 }
             </div>
+                <RelatedProducts currentCategoryId={product.category} productId={product.id} />
         </div>
     )
 }

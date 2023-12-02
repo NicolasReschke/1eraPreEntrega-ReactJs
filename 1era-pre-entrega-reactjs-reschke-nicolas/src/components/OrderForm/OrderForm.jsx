@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import { useCartContext } from '../../contexts/CartContext';
-import OrderSummary from '../OrderSummary/OrderSummary';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { addDoc, collection, getFirestore } from 'firebase/firestore'
+import { useCartContext } from '../../contexts/CartContext'
+
+import './OrderForm.css'
 
 const OrderForm = () => {
     const [formData, setFormData] = useState({
@@ -12,69 +13,114 @@ const OrderForm = () => {
         email2: ''
     });
 
-    const [isId, setIsId] = useState("")
-    const { cartList, emptyCart, totalPrice } = useCartContext()
+    const [isId, setIsId] = useState("");
+    const { cartList, emptyCart, totalPrice } = useCartContext();
 
-    const finishOrder = (evt) => {
+    const handleFinishOrder = (evt) => {
         evt.preventDefault()
-        const order = {}
-        order.buyer = formData
-        order.items = cartList.map( ( {id, price, cant, name} ) => ( { id: id, price: price, name: name, cant: cant } ) )
-        order.total = totalPrice()
+        const order = {
+            buyer: formData,
+            items: cartList.map(({ id, price, cant, name }) => ({ id, price, name, cant })),
+            total: totalPrice()
+        };
 
         if (formData.email !== formData.email2) {
             alert('Los correos electrónicos deben ser iguales!!')
-            return
+            return;
         }
 
         const db = getFirestore()
         const queryCollection = collection(db, 'orders')
 
         addDoc(queryCollection, order)
-        .then(({ id }) => setIsId(id))
-        .catch (err => console.log(err))
-        .finally(()=> {
-            setFormData({
-                name:'',
-                phone:'',
-                email:'',
-                email2:''
+            .then(({ id }) => setIsId(id))
+            .catch(err => console.log(err))
+            .finally(() => {
+                setFormData({
+                    name: '',
+                    phone: '',
+                    email: '',
+                    email2: ''
+                })
+                emptyCart();
             })
-            emptyCart()
-        })
     }
 
     const handleOnChange = (evt) => {
                 setFormData({
                     ...formData,
                     [evt.target.name]: evt.target.value
-                })
-            }
+                });
+            };
 
-    return (
-        <div>
-            {isId ? (
+    const copyText = () => {
+        const textToCopy = isId
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            alert('ID copiado al portapapeles')
+        }).catch((err) => {
+            console.error('Error al copiar al portapapeles:', err)
+        })
+    }
+
+    const renderEmptyCart = () => {
+        return (
             <div>
-                <h2>
-                    El id de la compra es: <br />
-                    <strong>{isId}</strong>
-                </h2>
-                <Link to={'/'} >
-                    <button className='btn btn-success'>⬅ Volver a la tienda</button>
-                </Link>
-                <img className='tyBuy' src="/assets/sample3.gif" alt="" />
-            </div>
+                {isId ? (
+                    <div>
+                        <h2>
+                            El id de la compra es: <br />
+                            <button className='btn btn-outline-dark mt-2' onClick={copyText}>
+                                <h1>{isId}</h1>
+                            </button>
+                        </h2>
+                        <div className='tyBuyClass'>
+                            <Link to={'/'}>
+                                <button className='btn btn-success'>⬅ Volver a la tienda</button>
+                            </Link>
+                            <img className='tyBuy' src="/assets/sample3.gif" alt="" />
+                        </div>
+                    </div>
             ) : (
-                <>
-                    <OrderSummary />
-                    <form onSubmit={finishOrder}>
+                    <div className='emptyCartClass'>
+                        <h3>
+                            Tu carrito está vacío 😓
+                        </h3>
+                        <Link to='/'>
+                            <button className="btn btn-success pt-3 pb-3">
+                                Volver a la tienda...
+                            </button>
+                        </Link>
+                    </div>
+                )}
+            </div>
+        )
+    }
+
+    const renderNotEmptyCart = () => {
+        return (
+            <div className='renderNotEmptyCartClass'>
+                <div>
+                    <h3>Precio total: $ {totalPrice()}</h3>
+                    <div className='buttonClass'>
+                        <Link to='/'>
+                            <button className="btn btn-success pt-3 pb-3">
+                                Seguir comprando...
+                            </button>
+                        </Link>
+                        <button className="btn btn-danger pt-3 pb-3" onClick={emptyCart}>
+                            Vaciar carrito
+                        </button>
+                    </div>
+                </div>
+                <div className='handleFinishOrderClass'>
+                    <form onSubmit={handleFinishOrder}>
                         <div className='labelClass'>
                             <label>Ingrese su nombre: </label>
                             <input type="text" name='name' required onChange={handleOnChange} value={formData.name} />
                         </div>
                         <div className='labelClass'>
                             <label>Ingrese su celular: </label>
-                            <input type="text" name='phone' required onChange={handleOnChange} value={formData.phone} />
+                            <input type="text" name='phone' pattern="[0-9]+" required onChange={handleOnChange} value={formData.phone} />
                         </div>
                         <div className='labelClass'>
                             <label>Ingrese su email: </label>
@@ -84,14 +130,20 @@ const OrderForm = () => {
                             <label>Reingresar su email: </label>
                             <input type="email" name='email2' required onChange={handleOnChange} value={formData.email2} />
                         </div>
-                        <button className='btn btn-primary'>
+                        <button className='btn btn-primary pt-3 pb-3'>
                             Terminar compra ✔
                         </button>
                     </form>
-                </>
-            )}
+                </div>
+            </div>
+        )
+    }
+
+    return (
+        <div>
+            {cartList.length > 0 ? renderNotEmptyCart() : renderEmptyCart()}
         </div>
-    )
+    );
 }
 
-export default OrderForm;
+export default OrderForm

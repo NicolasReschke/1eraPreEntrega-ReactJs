@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom"
 import { useCartContext } from "../../contexts/CartContext"
 
 export const ItemCart = ( {product} ) => {
     const { addItem, deleteItem, deleteItems } = useCartContext()
     return(
         <div key={product.id} className="divCart">
-                                                <img className="imgCart" src={product.img} alt= {product.name} />
+                                                <Link to={`/detail/${product.id}`}>
+                                                    <img className="imgCart" src={product.img} alt= {product.name} />
+                                                </Link>
                                                     <strong>
                                                         {product.name}
                                                     </strong>

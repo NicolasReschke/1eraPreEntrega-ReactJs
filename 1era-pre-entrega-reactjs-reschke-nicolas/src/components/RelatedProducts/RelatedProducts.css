@@ -1,0 +1,23 @@
+.relatedProductsContainer{
+    margin-top: 170px;
+}
+
+.h3relatedProductsContainer {
+    text-align: center;
+    margin: 50px;
+    color: #2b353f;
+    font-size: 28px;
+}
+
+.relatedProductsList {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    font-size: larger;
+    & img {
+        max-width: 150px;
+    }
+}
+
+

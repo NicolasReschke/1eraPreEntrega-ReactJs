@@ -19,7 +19,7 @@ export const ItemDetailContainer = () => {
         .then(res => setProduct( {id: res.id, ...res.data() } ))
         .catch(err => console.log(err))
         .finally(()=> setLoading(false))
-    }, [])
+    }, [pid])
     
 
     return (
